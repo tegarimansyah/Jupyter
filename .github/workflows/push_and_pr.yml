@@ -21,7 +21,7 @@ jobs:
             DEST_REPO_NAME: 'destination_repo'
             USER_EMAIL: 'test@example.com'
             PUSH_TO_BRANCH: 'from_jupyter'
-            PR_TO_BRANCH: 'dev'
+            PR_TO_BRANCH: 'master'
             SRC_DIR: 'docs'
             DEST_DIR: 'jupyter'
             PREFIX_DEST_FOLDER: 'planet/'
