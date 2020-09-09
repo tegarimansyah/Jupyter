@@ -1,27 +1,34 @@
 # This CI should run after mergin from Pull Request (after editing)
 
-name: Push to Other Repo and Make a PR
+name: Push to Other Repo Then Make a PR
 
 on:
- pull_request:
-  types: [closed]
+ push:
+  branches: [master]
   
 jobs:
-  build:
-    if: github.event.pull_request.merged == true
+  Processing Docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Push to other repository
-        uses: tegarimansyah/push_and_pr@master
+      - name: Push then create PR
+        uses: sepulsa/push_then_pr@master
         env:
             API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
 
             DEST_GITHUB_USERNAME: 'tegarimansyah'
             DEST_REPO_NAME: 'destination_repo'
             USER_EMAIL: 'test@example.com'
-            PUSH_TO_BRANCH: 'from_jupyter'
+            PUSH_TO_BRANCH: 'docs'
             PR_TO_BRANCH: 'master'
-            SRC_DIR: 'docs'
-            DEST_DIR: 'jupyter'
-            PREFIX_DEST_FOLDER: 'planet/'
+            # You can add multiple source file or folder separate by space
+            SRC_DIR: 'docs readme.adoc' 
+            # You can create nested folder
+            DEST_DIR: 'initiative/system_name'
+            # You can rename with format source(comma)target
+            # Multiple line if you want to move multiple file / folder
+            RENAME: >-
+                    readme.adoc,docs.adoc
+                    docs,docs
+            # Add your custom Pull Request message
+            PR_MESSAGE: 'New release from Jupyter at $(date)'
