@@ -7,7 +7,7 @@ on:
   branches: [master]
   
 jobs:
-  Processing Docs:
+  processing_docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
