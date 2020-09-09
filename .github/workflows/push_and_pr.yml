@@ -24,7 +24,7 @@ jobs:
             # You can add multiple source file or folder separate by space
             SRC_DIR: 'docs readme.adoc' 
             # You can create nested folder
-            DEST_DIR: 'initiative/system_name'
+            DEST_DIR: 'planet/jupyter'
             # You can rename with format source(comma)target
             # Multiple line if you want to move multiple file / folder
             RENAME: >-
